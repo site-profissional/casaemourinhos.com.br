@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://casaemourinhos.com.br/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp</image:loc>
+      <image:title>Fachada da casa de alto padrão à venda no Residencial Ville de France em Ourinhos</image:title>
+      <image:caption>Casa à venda em Ourinhos SP com 430 m² de área construída e terreno duplo de 912 m².</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp</image:loc>
+      <image:title>Fachada noturna com iluminação cênica da residência em Ourinhos</image:title>
+      <image:caption>Fachada com iluminação no Residencial Ville de France em Ourinhos SP.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp</image:loc>
+      <image:title>Espaço gourmet com churrasqueira e ilha da casa em Ourinhos</image:title>
+      <image:caption>Varanda gourmet com pé-direito elevado e churrasqueira integrada.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/suite-master-ampla-luminosidade.webp</image:loc>
+      <image:title>Suíte master com closet da casa no Ville de France</image:title>
+      <image:caption>Suíte master ampla com persiana automatizada e closet privativo.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/amplo-quintal-gramado-coqueiros.webp</image:loc>
+      <image:title>Amplo quintal com gramado e coqueiros em terreno de 912 m²</image:title>
+      <image:caption>Área externa e jardim da residência no Residencial Ville de France Ourinhos.</image:caption>
+    </image:image>
+  </url>
+</urlset>

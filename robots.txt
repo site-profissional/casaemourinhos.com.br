@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Permitir indexação de imagens e recursos estáticos
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Localização do Mapa do Site Oficial
+Sitemap: https://casaemourinhos.com.br/sitemap.xml
