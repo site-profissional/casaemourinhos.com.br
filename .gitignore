@@ -1,0 +1,22 @@
+# ==============================================================================
+# GITIGNORE - CASA EM OURINHOS (casaemourinhos.com.br)
+# ==============================================================================
+
+# Diretórios internos de agentes e documentação (solicitado pelo usuário)
+.agents/
+documentation/
+
+# Arquivos de rascunho e notas internas
+casa-ourinhos-landing-page.md
+.tempmediaStorage/
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs e arquivos temporários
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

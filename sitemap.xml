@@ -6,30 +6,69 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+
+    <!-- Fotografias Oficiais da Residência no Residencial Ville de France em Ourinhos -->
     <image:image>
       <image:loc>https://casaemourinhos.com.br/assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp</image:loc>
-      <image:title>Fachada da casa de alto padrão à venda no Residencial Ville de France em Ourinhos</image:title>
-      <image:caption>Casa à venda em Ourinhos SP com 430 m² de área construída e terreno duplo de 912 m².</image:caption>
+      <image:title>Casa à venda em Ourinhos - Fachada frontal no Residencial Ville de France</image:title>
+      <image:caption>Casa de alto padrão à venda em Ourinhos SP com 430 m² construídos em terreno duplo de 912 m².</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://casaemourinhos.com.br/assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp</image:loc>
-      <image:title>Fachada noturna com iluminação cênica da residência em Ourinhos</image:title>
-      <image:caption>Fachada com iluminação no Residencial Ville de France em Ourinhos SP.</image:caption>
+      <image:title>Fachada noturna com iluminação cênica - Casa à venda em Ourinhos</image:title>
+      <image:caption>Residência de alto padrão no Residencial Ville de France em Ourinhos com iluminação moderna.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://casaemourinhos.com.br/assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp</image:loc>
-      <image:title>Espaço gourmet com churrasqueira e ilha da casa em Ourinhos</image:title>
-      <image:caption>Varanda gourmet com pé-direito elevado e churrasqueira integrada.</image:caption>
+      <image:title>Espaço gourmet integrado com churrasqueira e ilha - Casa em Ourinhos</image:title>
+      <image:caption>Varanda gourmet com pé-direito elevado e churrasqueira para comprar casa em Ourinhos.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/sala-estar-pe-direito-duplo-ourinhos.webp</image:loc>
+      <image:title>Sala de estar com pé-direito duplo - Casa de alto padrão Ourinhos</image:title>
+      <image:caption>Ambiente social amplo com integração para jantar e jardim de inverno no Ville de France.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://casaemourinhos.com.br/assets/images/casa/suite-master-ampla-luminosidade.webp</image:loc>
-      <image:title>Suíte master com closet da casa no Ville de France</image:title>
-      <image:caption>Suíte master ampla com persiana automatizada e closet privativo.</image:caption>
+      <image:title>Suíte master com closet - Casa 4 suítes em Ourinhos SP</image:title>
+      <image:caption>Dormitório principal espaçoso e silencioso em casa à venda no Residencial Ville de France.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://casaemourinhos.com.br/assets/images/casa/amplo-quintal-gramado-coqueiros.webp</image:loc>
-      <image:title>Amplo quintal com gramado e coqueiros em terreno de 912 m²</image:title>
-      <image:caption>Área externa e jardim da residência no Residencial Ville de France Ourinhos.</image:caption>
+      <image:title>Quintal privativo com gramado e coqueiros em terreno de 912 m² Ourinhos</image:title>
+      <image:caption>Área verdejante privativa em lote duplo no Residencial Ville de France Ourinhos.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/cozinha-planejada-armarios-embutidos.webp</image:loc>
+      <image:title>Cozinha planejada com armários embutidos - Casa em condomínio Ourinhos</image:title>
+      <image:caption>Cozinha espaçosa com bancadas em granito e despensa integrada.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/casa/vista-aerea-noturna-residencia-terreno-duplo.webp</image:loc>
+      <image:title>Vista aérea da casa que ocupa dois terrenos no Ville de France Ourinhos</image:title>
+      <image:caption>Imóvel exclusivo edificado em 2 lotes unificados totalizando 912 m².</image:caption>
+    </image:image>
+
+    <!-- Fotografias das Amenidades do Condomínio Residencial Ville de France -->
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/condominio/quadra-de-tenis-ville-de-france.webp</image:loc>
+      <image:title>Quadra de tênis do condomínio Residencial Ville de France Ourinhos</image:title>
+      <image:caption>Estrutura esportiva completa no condomínio fechado Ville de France em Ourinhos SP.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/condominio/quadra-poliesportiva-ville-de-france.webp</image:loc>
+      <image:title>Quadra poliesportiva oficial - Residencial Ville de France Ourinhos</image:title>
+      <image:caption>Área de esportes e lazer coletivo para os moradores do Ville de France.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/condominio/playground-infantil-ville-de-france.webp</image:loc>
+      <image:title>Playground infantil seguro ao ar livre - Condomínio Ville de France</image:title>
+      <image:caption>Espaço de recreação infantil em meio à natureza com segurança 24h.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://casaemourinhos.com.br/assets/images/condominio/vista-aerea-condominio-completo.webp</image:loc>
+      <image:title>Vista aérea completa do Residencial Ville de France em Ourinhos - SP</image:title>
+      <image:caption>Condomínio horizontal de alto padrão com infraestrutura e portaria 24 horas.</image:caption>
     </image:image>
   </url>
 </urlset>
