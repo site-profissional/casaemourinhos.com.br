@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Identificadores de Analytics e Pixel (Configuráveis - Nenhum script externo é carregado se vazio)
   const GA_MEASUREMENT_ID = ""; // Exemplo: 'G-XXXXXXXXXX'
   const META_PIXEL_ID = "";     // Exemplo: '123456789012345'
-  
-  // URL opcional para Vídeo Tour (Configurável - Bloco não é exibido se vazio)
-  const VIDEO_TOUR_URL = "";
 
   /* --------------------------------------------------------------------------
      2. GESTÃO DE UTMs E CAPTURA DE PARÂMETROS DE CAMPANHA
@@ -775,21 +772,6 @@ document.addEventListener("DOMContentLoaded", () => {
       trackConversionEvent(eventName, eventOrigin);
     });
   });
-
-  /* --------------------------------------------------------------------------
-     10. COMPONENTE CONDICIONAL DE VÍDEO TOUR
-     -------------------------------------------------------------------------- */
-  const videoTourContainer = document.getElementById("videoTourWrapper");
-  if (videoTourContainer) {
-    if (VIDEO_TOUR_URL && VIDEO_TOUR_URL.trim() !== "") {
-      videoTourContainer.style.display = "block";
-      const iframe = videoTourContainer.querySelector("iframe");
-      if (iframe) iframe.src = VIDEO_TOUR_URL;
-    } else {
-      // Se não houver URL confirmada, oculta totalmente o bloco sem placeholder público
-      videoTourContainer.style.display = "none";
-    }
-  }
 
   console.log("Casa em Ourinhos — Sistema de UX/CRO inicializado com sucesso.");
 });

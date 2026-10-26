@@ -1597,33 +1597,47 @@ h1, h2, h3, h4, .font-serif {
 }
 
 /* --------------------------------------------------------------------------
-   14.2 VÍDEO TOUR (CONDICIONAL - ATIVADO SOMENTE COM URL VÁLIDA)
+   14.2 DESTAQUES DE ACESSIBILIDADE E DISTÂNCIA (5 KM / 10 MIN DO CENTRO)
    -------------------------------------------------------------------------- */
-.video-tour-section {
+.location-distance-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.distance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   background-color: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.video-tour-box {
-  background: #000000;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
   border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.5rem 1.15rem;
+  font-size: 0.875rem;
+  color: var(--color-text-main);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.video-responsive-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+.distance-pill svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
-.video-responsive-wrap iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+.distance-pill strong {
+  color: var(--color-accent-dark);
+}
+
+.hero-price-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: rgba(184, 151, 106, 0.15);
+  color: var(--color-accent-dark);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-left: 0.5rem;
 }
 
 /* --------------------------------------------------------------------------
