@@ -83,6 +83,8 @@ site/
 ├── sitemap.xml                          # Mapa do site com extensão de imagens
 ├── site.webmanifest                     # Manifesto Web
 ├── CNAME                                # Domínio oficial (casaemourinhos.com.br)
+├── favicon.ico / favicon.png            # Ícones do site (Emoji 🏠 em alta resolução)
+├── apple-touch-icon.png                 # Ícone Apple Touch (Emoji 🏠)
 ├── casa-ourinhos-landing-page.md        # Documento executivo de planejamento
 ├── documentation/
 │   └── promptHistory.md                 # Histórico completo de prompts da sessão
