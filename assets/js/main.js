@@ -1,7 +1,8 @@
 /**
  * ============================================================================
- * CASA EM OURINHOS — LANDING PAGE DE ALTO PADRÃO
+ * CASA EM OURINHOS — RESIDENCIAL VILLE DE FRANCE
  * Script Principal Vanilla JavaScript (Sem dependências externas)
+ * CRO, UX, Analytics Extensível, Preservação de UTMs e Lightbox Acessível
  * ============================================================================
  */
 
@@ -9,224 +10,299 @@ document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   /* --------------------------------------------------------------------------
-     1. CONSTANTES E CONFIGURAÇÕES OFICIAIS
+     1. CONFIGURAÇÕES PRINCIPAIS E INTEGRAÇÃO CONDICIONAL
      -------------------------------------------------------------------------- */
-  // URL para consulta de localização do condomínio no Google Maps
-  const MAPS_URL = "https://maps.google.com/?q=Residencial+Ville+de+France+Ourinhos+SP";
-
-  // Número oficial e mensagem formatada solicitada pelo usuário
+  // WhatsApp oficial para contato
   const WHATSAPP_PHONE = "5514998521062";
-  const WHATSAPP_DEFAULT_MSG = encodeURIComponent(
-    "Oi Danilo, vim pelo site da casa www.casaemourinhos.com.br e gostaria de obter mais informações e fazer uma visita"
-  );
+
+  // Identificadores de Analytics e Pixel (Configuráveis - Nenhum script externo é carregado se vazio)
+  const GA_MEASUREMENT_ID = ""; // Exemplo: 'G-XXXXXXXXXX'
+  const META_PIXEL_ID = "";     // Exemplo: '123456789012345'
+  
+  // URL opcional para Vídeo Tour (Configurável - Bloco não é exibido se vazio)
+  const VIDEO_TOUR_URL = "";
 
   /* --------------------------------------------------------------------------
-     2. BANCO DE IMAGENS COMPLETO (43 FOTOGRAFIAS EM WEBP)
+     2. GESTÃO DE UTMs E CAPTURA DE PARÂMETROS DE CAMPANHA
+     -------------------------------------------------------------------------- */
+  const utmParams = {};
+  const allowedUtms = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    allowedUtms.forEach((key) => {
+      const val = urlParams.get(key);
+      if (val) {
+        utmParams[key] = val;
+        sessionStorage.setItem(`casa_${key}`, val);
+      } else {
+        const stored = sessionStorage.getItem(`casa_${key}`);
+        if (stored) {
+          utmParams[key] = stored;
+        }
+      }
+    });
+  } catch (err) {
+    // Falha silenciosa para compatibilidade
+  }
+
+  /* --------------------------------------------------------------------------
+     3. MENSAGENS CONTEXTUAIS DO WHATSAPP (PROGRESSÃO DE INTENÇÃO)
+     -------------------------------------------------------------------------- */
+  const WHATSAPP_MESSAGES = {
+    // Topo / Tráfego Frio
+    hero: "Olá, Danilo. Vi a casa do Residencial Ville de France no site casaemourinhos.com.br e gostaria de receber mais informações sobre o imóvel.",
+    header: "Olá, Danilo. Vi a casa do Residencial Ville de France no site casaemourinhos.com.br e gostaria de receber mais informações sobre o imóvel.",
+    apresentacao: "Olá, Danilo. Vi a apresentação da casa no Residencial Ville de France e gostaria de saber mais detalhes sobre a propriedade.",
+    
+    // Meio de Página / Exploração de Ambientes
+    duvidas: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de tirar algumas dúvidas sobre o imóvel.",
+    galeria: "Olá, Danilo. Vi as fotos da casa no Residencial Ville de France e gostaria de conhecer mais detalhes da propriedade.",
+    social: "Olá, Danilo. Gostei da área social e gourmet da casa no Ville de France e gostaria de conversar a respeito.",
+    intima: "Olá, Danilo. Vi os detalhes das suítes da casa no Ville de France e gostaria de mais informações.",
+    externa: "Olá, Danilo. Gostei do amplo quintal e dos dois terrenos da casa no Ville de France e gostaria de mais informações.",
+    condominio: "Olá, Danilo. Vi as fotos do Residencial Ville de France e gostaria de informações sobre a casa anunciada.",
+    ficha: "Olá, Danilo. Consultei a ficha técnica da casa no Ville de France e gostaria de tirar algumas dúvidas.",
+    localizacao: "Olá, Danilo. Gostaria de solicitar informações sobre a localização da casa no Residencial Ville de France.",
+    quem_atende: "Olá, Danilo. Gostaria de conversar com você sobre a casa à venda no Residencial Ville de France.",
+
+    // Fundo / Alta Intenção / Visita
+    visita: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
+    final_cta: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
+    sticky: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
+    flutuante: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações sobre o imóvel."
+  };
+
+  /**
+   * Constrói a URL do WhatsApp com a mensagem contextual e tags discretas de rastreamento
+   */
+  function buildWhatsAppUrl(contextKey = "hero") {
+    let baseMsg = WHATSAPP_MESSAGES[contextKey] || WHATSAPP_MESSAGES.hero;
+    
+    // Adiciona discretamente a origem interna
+    let trackerTag = ` [ref:${contextKey}]`;
+    if (utmParams.utm_source) {
+      trackerTag = ` [ref:${contextKey}_${utmParams.utm_source}]`;
+    }
+
+    const fullMsg = encodeURIComponent(baseMsg + trackerTag);
+    return `https://wa.me/${WHATSAPP_PHONE}?text=${fullMsg}`;
+  }
+
+  /* --------------------------------------------------------------------------
+     4. BANCO DE FOTOGRAFIAS FACTUAL E COMPLETO (43 IMAGENS WEBP)
      -------------------------------------------------------------------------- */
   const GALLERY_ITEMS = [
-    // --- Fachada e Entrada ---
+    // --- Fachada & Entrada ---
     {
       src: "assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp",
       title: "Fachada Frontal Completa",
       caption: "Arquitetura contemporânea de linhas retas com pé-direito imponente e jardim frontal.",
-      category: "fachada"
+      category: "fachada",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp",
       title: "Fachada Noturna com Iluminação Cênica",
-      caption: "Projeto luminotécnico valorizando os volumes arquitetônicos e o paisagismo.",
-      category: "fachada"
+      caption: "Iluminação externa valorizando os volumes arquitetônicos e o paisagismo.",
+      category: "fachada",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/fachada-moderna-jardim-frontal.webp",
       title: "Vista Frontal e Paisagismo",
-      caption: "Gramado verdejante, palmeiras e entrada social imponente com vidros duplos.",
+      caption: "Entrada social, gramado e palmeiras na área frontal do lote.",
       category: "fachada"
     },
     {
       src: "assets/images/casa/jardim-frontal-paisagismo-ourinhos.webp",
       title: "Jardim Frontal e Calçada em Paver",
-      caption: "Área frontal com acabamento refinado e integração com a rua arborizada.",
+      caption: "Área de entrada frontal integrada à alameda residencial.",
       category: "fachada"
     },
     {
       src: "assets/images/casa/garagem-coberta-fachada-frontal.webp",
       title: "Garagem Coberta e Acesso Social",
-      caption: "Espaço coberto para 2 veículos e acesso direto sem desníveis.",
+      caption: "Espaço coberto para 2 veículos e acesso direto ao pavimento térreo.",
       category: "fachada"
     },
     {
       src: "assets/images/casa/garagem-ampla-espaco-veiculos.webp",
-      title: "Acomodação para até 5 Veículos",
-      caption: "Amplo espaço entre vagas cobertas e descobertas com piso de alta durabilidade.",
+      title: "Garagem com Vagas Cobertas e Descobertas",
+      caption: "Espaço amplo com capacidade total para até 5 veículos na propriedade.",
       category: "fachada"
     },
     {
       src: "assets/images/casa/vista-aerea-noturna-propriedade-ourinhos.webp",
       title: "Vista Aérea Noturna da Propriedade",
-      caption: "Destaque para o lote duplo de 912 m² e sua iluminação perimetral segura.",
-      category: "fachada"
+      caption: "Visão superior evidenciando os 912 m² de terreno composto por dois lotes.",
+      category: "fachada",
+      isHighlight: true
     },
 
-    // --- Área Social e Convivência ---
+    // --- Área Social ---
     {
       src: "assets/images/casa/sala-jantar-integrada-alto-padrao.webp",
       title: "Sala de Jantar Integrada",
-      caption: "Conexão fluida com a área de estar e cozinha, piso em porcelanato polido.",
+      caption: "Conexão fluida entre a área de jantar, o estar e a copa.",
       category: "social"
     },
     {
       src: "assets/images/casa/sala-estar-integracao-cozinha.webp",
-      title: "Sala de Estar e Convivência",
-      caption: "Ambiente claro, acolhedor e perfeitamente integrado para reunir família e convidados.",
-      category: "social"
+      title: "Sala de Estar Integrada",
+      caption: "Ambiente social claro e integrado à circulação principal da casa.",
+      category: "social",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/sala-estar-escada-design-moderno.webp",
-      title: "Escada Escultural em Granito e Vidro",
-      caption: "Guarda-corpo panorâmico em vidro e degraus com acabamento refinado.",
+      title: "Escada em Granito e Guarda-Corpo em Vidro",
+      caption: "Circulação com acabamento em granito e fechamento em vidro conectando os pavimentos.",
       category: "social"
     },
     {
       src: "assets/images/casa/detalhe-escada-sala-estar.webp",
       title: "Perspectiva da Escada e Circulação",
-      caption: "Design minimalista e amplitude vertical conectando os dois pavimentos.",
+      caption: "Amplitude vertical e iluminação natural na área de acesso aos quartos.",
       category: "social"
     },
     {
       src: "assets/images/casa/ambiente-social-escada-acesso-superior.webp",
       title: "Pé-Direito Elevado na Circulação Social",
-      caption: "Excelente entrada de luz natural e conforto térmico em todas as estações.",
+      caption: "Espaço arejado com circulação livre e esquadrias amplas de alumínio.",
       category: "social"
     },
     {
       src: "assets/images/casa/sala-tv-estar-integrada.webp",
-      title: "Sala de TV e Estar Térrea",
-      caption: "Ambiente reservado para entretenimento e descanso no pavimento inferior.",
+      title: "Sala de TV (Pavimento Térreo)",
+      caption: "Primeiro ambiente de TV e descanso no piso térreo.",
       category: "social"
     },
     {
       src: "assets/images/casa/sala-tv-mezanino-piso-superior.webp",
-      title: "Segunda Sala de TV no Mezanino Superior",
-      caption: "Ambiente privativo no andar superior para momentos em família com total tranquilidade.",
+      title: "Segunda Sala de TV no Pavimento Superior",
+      caption: "Ambiente íntimo reservado no mezanino para momentos de tranquilidade da família.",
       category: "social"
     },
     {
       src: "assets/images/casa/mezanino-pe-direito-duplo-vista-gourmet.webp",
-      title: "Vista do Mezanino para a Varanda Gourmet",
-      caption: "Sensação ímpar de amplitude visual do pé-direito duplo sobre a área gourmet.",
+      title: "Mezanino com Vista para a Varanda Gourmet",
+      caption: "Pé-direito elevado com visão aberta entre o pavimento superior e a varanda gourmet.",
       category: "social"
     },
 
-    // --- Cozinha e Espaço Gourmet ---
+    // --- Cozinha & Espaço Gourmet ---
     {
       src: "assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp",
-      title: "Espaço Gourmet com Ilha e Pé-Direito Elevado",
-      caption: "Bancada em granito escuro, marcenaria planejada e integração visual completa.",
-      category: "gourmet"
+      title: "Varanda Gourmet com Ilha e Churrasqueira",
+      caption: "Bancada em granito, churrasqueira integrada, ilha de apoio e pé-direito elevado.",
+      category: "gourmet",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/varanda-gourmet-churrasqueira-planejados.webp",
-      title: "Churrasqueira Moderna Revestida",
-      caption: "Grelha inox, coifa eficiente e revestimento geométrico 3D de alta sofisticação.",
+      title: "Churrasqueira e Armários Planejados",
+      caption: "Espaço gourmet com armários sob medida e cuba de apoio.",
       category: "gourmet"
     },
     {
       src: "assets/images/casa/bancada-granito-churrasqueira-gourmet.webp",
-      title: "Bancada Gourmet e Cuba de Apoio",
-      caption: "Espaço funcional pensado para o preparo de refeições especiais com amigos.",
+      title: "Bancada Gourmet em Granito",
+      caption: "Bancada de preparo e apoio integrada à varanda fechada em vidro.",
       category: "gourmet"
     },
     {
       src: "assets/images/casa/cozinha-principal-planejados-granito.webp",
       title: "Cozinha com Armários Planejados",
-      caption: "Móveis sob medida, amplas bancadas de trabalho e torre quente funcional.",
-      category: "gourmet"
+      caption: "Armários sob medida, bancadas em granito e torre quente.",
+      category: "gourmet",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/cozinha-planejada-armarios-modernos.webp",
-      title: "Detalhes da Marcenaria da Cozinha",
-      caption: "Armários superiores com nichos e acabamento resistente de fácil manutenção.",
+      title: "Armários e Nichos da Cozinha",
+      caption: "Marcenaria funcional com armários aéreos e amplos balcões.",
       category: "gourmet"
     },
     {
       src: "assets/images/casa/cozinha-integrada-area-social.webp",
-      title: "Integração da Cozinha com a Área Social",
-      caption: "Visão aberta facilitando a comunicação com a copa e salas.",
+      title: "Integração da Cozinha com Área Social",
+      caption: "Abertura prática facilitando o serviço para as salas e a copa.",
       category: "gourmet"
     },
     {
       src: "assets/images/casa/copa-cozinha-refeicoes-integrada.webp",
       title: "Copa para Refeições Diárias",
-      caption: "Praticidade e conforto para o café da manhã e almoços cotidianos.",
+      caption: "Espaço para mesa de refeições rápidas integrado à cozinha.",
       category: "gourmet"
     },
     {
       src: "assets/images/casa/vista-ampla-cozinha-planejada.webp",
-      title: "Ampla Visão da Cozinha Funcional",
-      caption: "Iluminação dedicada e ventilação natural com esquadrias de alumínio.",
+      title: "Visão Geral da Cozinha",
+      caption: "Bancadas amplas com ventilação natural por esquadrias de alumínio.",
       category: "gourmet"
     },
 
-    // --- Suítes e Área Íntima ---
+    // --- Suítes & Dormitórios ---
     {
       src: "assets/images/casa/suite-master-ampla-luminosidade.webp",
       title: "Suíte Master com Closet",
-      caption: "Espaço generoso, closet privativo e portas balcão com persiana integrada.",
-      category: "suites"
+      caption: "Quarto principal amplo com iluminação natural, persiana integrada e closet privativo.",
+      category: "suites",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/suite-master-conforto-persiana-automatizada.webp",
-      title: "Suíte Master — Ângulo de Descanso",
-      caption: "Conforto acústico, climatização preparada e privacidade absoluta.",
+      title: "Suíte Master — Perspectiva de Descanso",
+      caption: "Espaço reservado no piso superior com persiana automatizada.",
       category: "suites"
     },
     {
       src: "assets/images/casa/banheiro-suite-master-acabamento-nobre.webp",
       title: "Banheiro da Suíte Master",
-      caption: "Revestimentos em porcelanato de grande formato e box blindex de qualidade.",
+      caption: "Banheiro privativo da suíte master com bancada em mármore e box blindex.",
       category: "suites"
     },
     {
       src: "assets/images/casa/bancada-pia-banheiro-suite-master.webp",
       title: "Bancada Esculpida do Banheiro Master",
-      caption: "Mármore nobre com cuba esculpida e metais sanitários de alto padrão.",
+      caption: "Bancada com cuba esculpida e espelho amplo.",
       category: "suites"
     },
     {
       src: "assets/images/casa/suite-2-superior-conforto-espaco.webp",
-      title: "Suíte Superior 2",
-      caption: "Quarto amplo com espaço para bancada de estudos e iluminação embutida.",
+      title: "Segunda Suíte (Pavimento Superior)",
+      caption: "Quarto confortável com banheiro privativo e iluminação embutida.",
       category: "suites"
     },
     {
       src: "assets/images/casa/suite-2-superior-vista-ampla.webp",
-      title: "Suíte Superior 2 — Conforto",
-      caption: "Acesso privativo ao banheiro e vista aberta para a tranquilidade do condomínio.",
+      title: "Segunda Suíte — Vista Aberta",
+      caption: "Quarto com janela ampla voltada para a área do condomínio.",
       category: "suites"
     },
     {
       src: "assets/images/casa/banheiro-suite-2-superior.webp",
-      title: "Banheiro da Suíte Superior 2",
-      caption: "Bancada em mármore travertino, espelho amplo e box com acabamento fosco.",
+      title: "Banheiro da Segunda Suíte",
+      caption: "Banheiro privativo com bancada em mármore travertino e box.",
       category: "suites"
     },
     {
       src: "assets/images/casa/suite-3-superior-iluminacao-natural.webp",
-      title: "Suíte Superior 3",
-      caption: "Excelente incidência de luz natural e armários bem posicionados.",
+      title: "Terceira Suíte (Pavimento Superior)",
+      caption: "Quarto com excelente incidência de luz natural e armários bem posicionados.",
       category: "suites"
     },
     {
       src: "assets/images/casa/quarto-dormitorio-piso-superior.webp",
       title: "Quinto Dormitório (Piso Superior)",
-      caption: "Ambiente flexível para dormitório de hóspedes, home office ou biblioteca.",
+      caption: "Quarto versátil para acomodar hóspedes, biblioteca ou escritório.",
       category: "suites"
     },
     {
       src: "assets/images/casa/suite-terrea-privativa-acessibilidade.webp",
-      title: "Suíte Térrea Privativa",
-      caption: "Quarta suíte posicionada no piso térreo, ideal para visitantes ou acessibilidade.",
+      title: "Quarta Suíte (Pavimento Térreo)",
+      caption: "Suíte privativa localizada no térreo, oferecendo facilidade de acesso sem escadas.",
       category: "suites"
     },
     {
@@ -236,59 +312,60 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "suites"
     },
 
-    // --- Quintal e Área Externa ---
+    // --- Quintal & Área Externa ---
     {
       src: "assets/images/casa/amplo-quintal-gramado-coqueiros.webp",
       title: "Amplo Quintal Gramado com Coqueiros",
-      caption: "Área verde exuberante no lote duplo de 912 m² com espaço para diversos projetos.",
-      category: "externa"
+      caption: "Área verde privativa na propriedade de 912 m² composta por dois lotes.",
+      category: "externa",
+      isHighlight: true
     },
     {
       src: "assets/images/casa/varanda-superior-vista-quintal-jardim.webp",
-      title: "Vista Panorâmica da Varanda Superior",
-      caption: "Terraço do andar de cima com vista ampla para o quintal privativo e horizonte.",
+      title: "Vista da Varanda Superior para o Quintal",
+      caption: "Terraço do pavimento superior com vista panorâmica para o gramado e os coqueiros.",
       category: "externa"
     },
     {
       src: "assets/images/casa/terraco-superior-vista-panoramica.webp",
-      title: "Terraço Superior e Deck",
-      caption: "Piso cerâmico que remete à madeira e mureta com acabamento em granito.",
+      title: "Terraço Superior",
+      caption: "Piso cerâmico e mureta de proteção com vista aberta para a área externa.",
       category: "externa"
     },
     {
       src: "assets/images/casa/jardim-quintal-espaco-verde-privativo.webp",
-      title: "Jardim dos Coqueiros e Caminho de Tijolos",
-      caption: "Paisagismo natural consolidado proporcionando sombra, ar puro e privacidade.",
+      title: "Jardim dos Coqueiros e Caminho de Acesso",
+      caption: "Paisagismo consolidado com coqueiros e caminho de tijolos no quintal.",
       category: "externa"
     },
     {
       src: "assets/images/casa/quintal-amplo-terreno-912m2.webp",
-      title: "Espaço Aberto do Quintal",
-      caption: "Terreno duplo de 912 m² unificado com segurança entre muros altos.",
+      title: "Dimensão do Quintal nos Dois Lotes",
+      caption: "Área privativa ampla entre muros altos no terreno de 912 m².",
       category: "externa"
     },
     {
       src: "assets/images/casa/fachada-posterior-quintal-privativo.webp",
       title: "Fachada Posterior e Varanda Gourmet",
-      caption: "Varanda fechada em blindex com ligação direta para o gramado.",
+      caption: "Conexão direta entre o fechamento de vidro da varanda gourmet e o gramado.",
       category: "externa"
     },
     {
       src: "assets/images/casa/varanda-gourmet-fechada-vidro-vista-quintal.webp",
       title: "Fechamento em Vidro da Varanda Gourmet",
-      caption: "Permite desfrutar do espaço gourmet em dias de chuva ou vento com todo o conforto.",
+      caption: "Folhas de vidro de correr que integram o ambiente gourmet com o quintal.",
       category: "externa"
     },
     {
       src: "assets/images/casa/espaco-pet-canil-quintal.webp",
       title: "Canil Estruturado no Quintal",
-      caption: "Estrutura dedicada para animais de estimação com segurança e higienização fácil.",
+      caption: "Espaço dedicado para animais com estrutura segura e de fácil higienização.",
       category: "externa"
     },
     {
       src: "assets/images/casa/area-externa-canil-gramado.webp",
-      title: "Circulação Lateral e Canil",
-      caption: "Acesso lateral independente conectando frente e fundos sem passar pela casa.",
+      title: "Circulação Lateral Independente",
+      caption: "Acesso lateral ligando a frente e o quintal sem necessidade de passar pelo interior da casa.",
       category: "externa"
     },
 
@@ -296,55 +373,55 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       src: "assets/images/condominio/condominio-ville-de-france-vista-aerea-panoramica.webp",
       title: "Residencial Ville de France — Vista Aérea",
-      caption: "Condomínio fechado com ruas largas, infraestrutura completa e contato direto com a natureza.",
+      caption: "Condomínio fechado com ruas arborizadas e infraestrutura completa em Ourinhos - SP.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-por-do-sol-aereo.webp",
       title: "Pôr do Sol no Ville de France",
-      caption: "Cenário inspirador e tranquilidade para viver os melhores momentos da vida.",
+      caption: "Vista aérea do condomínio ao entardecer.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-quadra-tenis.webp",
-      title: "Quadra Oficial de Tênis",
-      caption: "Piso profissional com iluminação para a prática esportiva a poucos passos de casa.",
+      title: "Quadra de Tênis",
+      caption: "Quadra com iluminação para a prática esportiva dentro do condomínio.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-quadra-poliesportiva.webp",
-      title: "Quadra Poliesportiva e Basquete",
-      caption: "Espaço completo para futebol de salão, basquete e atividades esportivas infantis.",
+      title: "Quadra Poliesportiva",
+      caption: "Estrutura para futebol de salão, basquete e atividades esportivas.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-playground.webp",
-      title: "Playground Infantil com Área Verde",
-      caption: "Brinquedos modernos e seguros para as crianças se divertirem com total segurança.",
+      title: "Playground Infantil",
+      caption: "Área de lazer ao ar livre dedicada para crianças brincarem com segurança.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-ginastica-ar-livre.webp",
       title: "Equipamentos de Ginástica ao Ar Livre",
-      caption: "Estação de exercícios físicos em meio à vegetação preservada do condomínio.",
+      caption: "Estações de exercícios integradas às áreas verdes do condomínio.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-pergolado-convivencia.webp",
-      title: "Pergolado e Espaço de Convivência",
-      caption: "Ambiente para leitura, descanso e contemplação das áreas arborizadas.",
+      title: "Pergolados de Convivência",
+      caption: "Espaços com pergolados de madeira rodeados de jardins floridos.",
       category: "condominio"
     },
     {
       src: "assets/images/condominio/condominio-ville-de-france-pergolado-paisagismo.webp",
-      title: "Paisagismo e Alamedas Arborizadas",
-      caption: "Ruas calmas, segurança e portaria 24 horas para sua total tranquilidade.",
+      title: "Alamedas Arborizadas",
+      caption: "Ruas tranquilas e portaria 24 horas para segurança de moradores e visitantes.",
       category: "condominio"
     }
   ];
 
   /* --------------------------------------------------------------------------
-     3. HEADER COM TRANSIÇÃO INTELIGENTE DE SCROLL
+     5. HEADER COM TRANSIÇÃO DE SCROLL E MENU MOBILE
      -------------------------------------------------------------------------- */
   const header = document.getElementById("siteHeader");
   const handleScroll = () => {
@@ -358,9 +435,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
 
-  /* --------------------------------------------------------------------------
-     4. MENU MOBILE HAMBÚRGUER COM ACESSIBILIDADE
-     -------------------------------------------------------------------------- */
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileDrawer = document.getElementById("mobileDrawer");
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link, .mobile-drawer-cta");
@@ -403,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* --------------------------------------------------------------------------
-     5. ROLAGEM SUAVE COM OFFSET PARA O HEADER FIXO
+     6. ROLAGEM SUAVE COM OFFSET PARA CABEÇALHO FIXO
      -------------------------------------------------------------------------- */
   const internalAnchors = document.querySelectorAll('a[href^="#"]:not([href="#"])');
   internalAnchors.forEach((anchor) => {
@@ -426,33 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* --------------------------------------------------------------------------
-     6. FILTROS NA PÁGINA PARA A GALERIA DE FOTOS
-     -------------------------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const galleryCards = document.querySelectorAll(".gallery-card");
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const selectedCat = btn.getAttribute("data-filter") || "todas";
-
-      // Atualiza botões
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      // Filtra os cards visíveis na página
-      galleryCards.forEach((card) => {
-        const cardCat = card.getAttribute("data-category");
-        if (selectedCat === "todas" || cardCat === selectedCat) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    });
-  });
-
-  /* --------------------------------------------------------------------------
-     7. LIGHTBOX MODAL VANILLA — BUSCA EXATA POR SRC (ZERO DESCOMPASSO)
+     7. LIGHTBOX MODAL VANILLA COMPLETO COM NAVEGAÇÃO E TOUCH
      -------------------------------------------------------------------------- */
   const lightbox = document.getElementById("lightboxModal");
   const lightboxImg = document.getElementById("lightboxImage");
@@ -463,17 +511,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxCloseBtn = document.getElementById("lightboxClose");
   const lightboxTabs = document.querySelectorAll(".lightbox-tab-btn");
 
-  let currentCategory = "todas";
   let activeList = [...GALLERY_ITEMS];
   let currentIndex = 0;
   let lastActiveElement = null;
 
-  // Atualiza a exibição no lightbox com métodos DOM seguros
   const renderCurrentPhoto = () => {
     if (!lightboxImg || activeList.length === 0) return;
     const item = activeList[currentIndex];
 
-    lightboxImg.style.opacity = "0.4";
+    lightboxImg.style.opacity = "0.3";
     lightboxImg.src = item.src;
     lightboxImg.alt = item.title;
 
@@ -490,34 +536,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const strongEl = document.createElement("strong");
       strongEl.textContent = item.title;
       lightboxCaption.appendChild(strongEl);
-      lightboxCaption.appendChild(document.createTextNode(` — ${item.caption}`));
+      if (item.caption) {
+        lightboxCaption.appendChild(document.createTextNode(` — ${item.caption}`));
+      }
     }
   };
 
-  // Abre o lightbox buscando pelo SRC exato da imagem clicada
-  const openLightboxBySrc = (imgSrc) => {
+  const openLightboxBySrc = (imgSrc, preferCategory = "todas") => {
     lastActiveElement = document.activeElement;
 
-    // Normaliza caminho para busca
     const cleanSrc = imgSrc.split("?")[0];
     let foundIndex = GALLERY_ITEMS.findIndex(
       (item) => cleanSrc.endsWith(item.src) || item.src.endsWith(cleanSrc)
     );
 
     if (foundIndex === -1) {
-      // Tenta achar pelo nome do arquivo
       const filename = cleanSrc.split("/").pop();
       foundIndex = GALLERY_ITEMS.findIndex((item) => item.src.endsWith(filename));
     }
 
-    // Se encontrou, usa a lista completa com todas as fotos para navegação
     activeList = [...GALLERY_ITEMS];
     currentIndex = foundIndex !== -1 ? foundIndex : 0;
 
-    // Sincroniza abas internas do modal
     if (lightboxTabs) {
       lightboxTabs.forEach((tab) => {
-        tab.classList.toggle("active", tab.dataset.cat === "todas");
+        tab.classList.toggle("active", tab.dataset.cat === preferCategory);
       });
     }
 
@@ -530,12 +573,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (lightboxCloseBtn) lightboxCloseBtn.focus();
     }
 
-    trackConversionEvent("open_gallery", "lightbox", { src: imgSrc, index: currentIndex });
+    trackConversionEvent("gallery_open", "lightbox", { src: imgSrc, index: currentIndex });
   };
 
-  // Filtragem interna do modal
   const filterLightboxTabs = (cat) => {
-    currentCategory = cat;
     if (cat === "todas") {
       activeList = [...GALLERY_ITEMS];
     } else {
@@ -581,7 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (lightboxNextBtn) lightboxNextBtn.addEventListener("click", nextPhoto);
   if (lightboxCloseBtn) lightboxCloseBtn.addEventListener("click", closeLightbox);
 
-  // Escuta cliques em qualquer imagem com atributo data-open-lightbox ou em galeria
+  // Escuta cliques em qualquer gatilho com data-open-lightbox
   document.querySelectorAll("[data-open-lightbox]").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
@@ -591,6 +632,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Botão "Ver todas as 35 fotos"
+  const btnOpenFullGallery = document.getElementById("btnOpenFullGallery");
+  if (btnOpenFullGallery) {
+    btnOpenFullGallery.addEventListener("click", (e) => {
+      e.preventDefault();
+      trackConversionEvent("gallery_view_all", "gallery_button");
+      openLightboxBySrc(GALLERY_ITEMS[0].src, "todas");
+    });
+  }
 
   // Teclado no Lightbox
   document.addEventListener("keydown", (e) => {
@@ -604,10 +655,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Touch Swipe Mobile no Lightbox
+  // Swipe Touch no Lightbox Mobile
   let touchStartX = 0;
   let touchEndX = 0;
-
   if (lightbox) {
     lightbox.addEventListener("touchstart", (e) => {
       touchStartX = e.changedTouches[0].screenX;
@@ -615,47 +665,110 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lightbox.addEventListener("touchend", (e) => {
       touchEndX = e.changedTouches[0].screenX;
-      const threshold = 50;
+      const threshold = 45;
       if (touchEndX < touchStartX - threshold) nextPhoto();
       if (touchEndX > touchStartX + threshold) prevPhoto();
     }, { passive: true });
   }
 
   /* --------------------------------------------------------------------------
-     8. TRACKING DE EVENTOS DE CONVERSÃO & ANALYTICS EXTENSÍVEL
+     8. ANALYTICS EXTENSÍVEL (CONFIGURÁVEL E RESPEITOSO)
      -------------------------------------------------------------------------- */
   function trackConversionEvent(eventName, eventOrigin, customData = {}) {
     const payload = {
       event: eventName,
       origin: eventOrigin,
       timestamp: new Date().toISOString(),
+      ...utmParams,
       ...customData
     };
 
+    // Google Tag Manager / DataLayer
     if (window.dataLayer && Array.isArray(window.dataLayer)) {
       window.dataLayer.push(payload);
     }
 
+    // Google Analytics 4 (se configurado)
     if (typeof window.gtag === "function") {
       window.gtag("event", eventName, {
-        event_category: "Engagement",
+        event_category: "Lead_Conversion",
         event_label: eventOrigin,
         ...customData
       });
     }
 
-    if (typeof window.clarity === "function") {
-      window.clarity("event", `${eventName}_${eventOrigin}`);
+    // Meta Pixel (se configurado)
+    if (typeof window.fbq === "function") {
+      if (eventName === "whatsapp_click" || eventName === "schedule_visit_click") {
+        window.fbq("track", "Contact", {
+          content_name: "Casa Residencial Ville de France Ourinhos",
+          source: eventOrigin
+        });
+      } else {
+        window.fbq("trackCustom", eventName, payload);
+      }
     }
 
+    // Log em ambiente de desenvolvimento local
     try {
       if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        console.log("[Analytics]:", payload);
+        console.log("[Analytics Event]:", payload);
       }
     } catch (_) {}
   }
 
-  document.querySelectorAll("[data-event]").forEach((btn) => {
+  // Carregamento condicional seguro de GA4 apenas se configurado
+  if (GA_MEASUREMENT_ID && GA_MEASUREMENT_ID.startsWith("G-")) {
+    const gaScript = document.createElement("script");
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(gaScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", GA_MEASUREMENT_ID, { send_page_view: true });
+  }
+
+  // Carregamento condicional de Meta Pixel apenas se configurado
+  if (META_PIXEL_ID && /^\d+$/.test(META_PIXEL_ID)) {
+    !(function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", META_PIXEL_ID);
+    window.fbq("track", "PageView");
+  }
+
+  /* --------------------------------------------------------------------------
+     9. ATUALIZAÇÃO INTELIGENTE DOS LINKS DE CONVERSÃO DO WHATSAPP
+     -------------------------------------------------------------------------- */
+  document.querySelectorAll("[data-wa-context]").forEach((link) => {
+    const context = link.getAttribute("data-wa-context") || "hero";
+    link.setAttribute("href", buildWhatsAppUrl(context));
+    
+    link.addEventListener("click", () => {
+      const eventName = link.getAttribute("data-event") || "whatsapp_click";
+      const origin = link.getAttribute("data-origin") || context;
+      trackConversionEvent(eventName, origin);
+    });
+  });
+
+  // Atualiza também quaisquer outros links legados marcados com data-event
+  document.querySelectorAll("[data-event]:not([data-wa-context])").forEach((btn) => {
     btn.addEventListener("click", () => {
       const eventName = btn.getAttribute("data-event") || "click";
       const eventOrigin = btn.getAttribute("data-origin") || "unknown";
@@ -663,22 +776,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Botão de Localização Maps
-  const mapsBtn = document.getElementById("btnRequestMaps");
-  if (mapsBtn) {
-    mapsBtn.addEventListener("click", () => {
-      trackConversionEvent("click_maps", "location_section");
-      mapsBtn.setAttribute(
-        "href",
-        `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_DEFAULT_MSG}`
-      );
-    });
+  /* --------------------------------------------------------------------------
+     10. COMPONENTE CONDICIONAL DE VÍDEO TOUR
+     -------------------------------------------------------------------------- */
+  const videoTourContainer = document.getElementById("videoTourWrapper");
+  if (videoTourContainer) {
+    if (VIDEO_TOUR_URL && VIDEO_TOUR_URL.trim() !== "") {
+      videoTourContainer.style.display = "block";
+      const iframe = videoTourContainer.querySelector("iframe");
+      if (iframe) iframe.src = VIDEO_TOUR_URL;
+    } else {
+      // Se não houver URL confirmada, oculta totalmente o bloco sem placeholder público
+      videoTourContainer.style.display = "none";
+    }
   }
 
-  // Atualiza dinamicamente todos os links oficiais com a mensagem solicitada
-  document.querySelectorAll("a.btn-whatsapp-dynamic").forEach((waLink) => {
-    waLink.setAttribute("href", `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_DEFAULT_MSG}`);
-  });
-
-  console.log("Casa em Ourinhos — Sistema inicializado com mensagem oficial do Danilo.");
+  console.log("Casa em Ourinhos — Sistema de UX/CRO inicializado com sucesso.");
 });

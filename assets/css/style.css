@@ -671,6 +671,79 @@ h1, h2, h3, h4, .font-serif {
 /* --------------------------------------------------------------------------
    9. STORYTELLING & APRESENTAÇÃO
    -------------------------------------------------------------------------- */
+.presentation-section {
+  background-color: var(--color-bg);
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.presentation-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.5rem, 5vw, 4rem);
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+}
+
+.presentation-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.presentation-header {
+  margin-bottom: 2rem;
+}
+
+.presentation-title {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-top: 0.5rem;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.presentation-content p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.presentation-content .lead-text {
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.presentation-meta-highlight {
+  background-color: var(--color-bg-alt);
+  padding: 1.25rem 1.75rem;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-text-main) !important;
+  font-size: 1rem !important;
+  margin-top: 0.5rem;
+}
+
+.presentation-meta-highlight strong {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
 .story-section {
   background-color: var(--color-bg);
 }
@@ -780,6 +853,43 @@ h1, h2, h3, h4, .font-serif {
   background-color: var(--color-text-main);
   color: #ffffff;
   border-color: var(--color-text-main);
+}
+
+/* Grade Curada de 8 Imagens Protagonistas */
+.gallery-curated-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.gallery-card-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-dark);
+  background-color: rgba(184, 151, 106, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.gallery-action-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.02em;
 }
 
 /* Grade com Todas as Fotos à Mostra */
@@ -1406,6 +1516,117 @@ h1, h2, h3, h4, .font-serif {
 }
 
 /* --------------------------------------------------------------------------
+   14.1 QUEM ATENDE VOCÊ (ATENDIMENTO TRANSPARENTE E CONSULTIVO)
+   -------------------------------------------------------------------------- */
+.who-attends-section {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: clamp(3.5rem, 5vw, 5rem) 0;
+}
+
+.who-attends-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: var(--shadow-card);
+}
+
+.who-attends-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-alt) 100%);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-subtle);
+}
+
+.who-attends-avatar svg {
+  width: 44px;
+  height: 44px;
+  color: var(--color-accent-dark);
+}
+
+.who-attends-info {
+  flex: 1;
+}
+
+.who-attends-title {
+  font-size: clamp(1.75rem, 2.5vw, 2.2rem);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.who-attends-name {
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.who-attends-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: rgba(184, 151, 106, 0.15);
+  color: var(--color-accent-dark);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.who-attends-note {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.who-attends-actions {
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   14.2 VÍDEO TOUR (CONDICIONAL - ATIVADO SOMENTE COM URL VÁLIDA)
+   -------------------------------------------------------------------------- */
+.video-tour-section {
+  background-color: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.video-tour-box {
+  background: #000000;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+.video-responsive-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.video-responsive-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* --------------------------------------------------------------------------
    15. FAQ (PERGUNTAS FREQUENTES COM DETAILS/SUMMARY)
    -------------------------------------------------------------------------- */
 .faq-section {
@@ -1530,6 +1751,27 @@ h1, h2, h3, h4, .font-serif {
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.05em;
+}
+
+.final-cta-meta-compact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+  padding: 0.65rem 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.final-cta-meta-compact .meta-sep {
+  color: var(--color-accent);
+  opacity: 0.7;
 }
 
 /* --------------------------------------------------------------------------
@@ -1809,7 +2051,8 @@ h1, h2, h3, h4, .font-serif {
     gap: 3rem;
   }
 
-  .gallery-all-grid {
+  .gallery-all-grid,
+  .gallery-curated-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1855,6 +2098,26 @@ h1, h2, h3, h4, .font-serif {
   .location-box {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .who-attends-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.75rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .who-attends-name {
+    justify-content: center;
+  }
+
+  .who-attends-actions {
+    width: 100%;
+  }
+
+  .who-attends-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .footer-top {
@@ -2001,9 +2264,14 @@ h1, h2, h3, h4, .font-serif {
     font-size: 0.8125rem;
   }
 
-  .gallery-all-grid {
+  .gallery-all-grid,
+  .gallery-curated-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .presentation-card {
+    padding: 2rem 1.25rem;
   }
 
   .gallery-card-thumb-wrap {
