@@ -44,45 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* --------------------------------------------------------------------------
-     3. MENSAGENS CONTEXTUAIS DO WHATSAPP (PROGRESSÃO DE INTENÇÃO)
+     3. MENSAGEM UNIFICADA DO WHATSAPP
      -------------------------------------------------------------------------- */
-  const WHATSAPP_MESSAGES = {
-    // Topo / Tráfego Frio
-    hero: "Olá, Danilo. Vi a casa do Residencial Ville de France no site casaemourinhos.com.br e gostaria de receber mais informações sobre o imóvel.",
-    header: "Olá, Danilo. Vi a casa do Residencial Ville de France no site casaemourinhos.com.br e gostaria de receber mais informações sobre o imóvel.",
-    apresentacao: "Olá, Danilo. Vi a apresentação da casa no Residencial Ville de France e gostaria de saber mais detalhes sobre a propriedade.",
-    
-    // Meio de Página / Exploração de Ambientes
-    duvidas: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de tirar algumas dúvidas sobre o imóvel.",
-    galeria: "Olá, Danilo. Vi as fotos da casa no Residencial Ville de France e gostaria de conhecer mais detalhes da propriedade.",
-    social: "Olá, Danilo. Gostei da área social e gourmet da casa no Ville de France e gostaria de conversar a respeito.",
-    intima: "Olá, Danilo. Vi os detalhes das suítes da casa no Ville de France e gostaria de mais informações.",
-    externa: "Olá, Danilo. Gostei do amplo quintal e dos dois terrenos da casa no Ville de France e gostaria de mais informações.",
-    condominio: "Olá, Danilo. Vi as fotos do Residencial Ville de France e gostaria de informações sobre a casa anunciada.",
-    ficha: "Olá, Danilo. Consultei a ficha técnica da casa no Ville de France e gostaria de tirar algumas dúvidas.",
-    localizacao: "Olá, Danilo. Gostaria de solicitar informações sobre a localização da casa no Residencial Ville de France.",
-    quem_atende: "Olá, Danilo. Gostaria de conversar com você sobre a casa à venda no Residencial Ville de France.",
-
-    // Fundo / Alta Intenção / Visita
-    visita: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
-    final_cta: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
-    sticky: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações e verificar horários disponíveis para uma visita.",
-    flutuante: "Olá, Danilo. Vi a casa do Residencial Ville de France no site e gostaria de receber mais informações sobre o imóvel."
-  };
+  const UNIFIED_WHATSAPP_MESSAGE = "Oi Danilo, vim pelo site da casa, tenho interesse e gostaria de obter mais informações / agendar uma visita ao imóvel";
 
   /**
-   * Constrói a URL do WhatsApp com a mensagem contextual e tags discretas de rastreamento
+   * Constrói a URL do WhatsApp com a mensagem solicitada pelo usuário
    */
-  function buildWhatsAppUrl(contextKey = "hero") {
-    let baseMsg = WHATSAPP_MESSAGES[contextKey] || WHATSAPP_MESSAGES.hero;
-    
-    // Adiciona discretamente a origem interna
-    let trackerTag = ` [ref:${contextKey}]`;
-    if (utmParams.utm_source) {
-      trackerTag = ` [ref:${contextKey}_${utmParams.utm_source}]`;
-    }
-
-    const fullMsg = encodeURIComponent(baseMsg + trackerTag);
+  function buildWhatsAppUrl() {
+    const fullMsg = encodeURIComponent(UNIFIED_WHATSAPP_MESSAGE);
     return `https://wa.me/${WHATSAPP_PHONE}?text=${fullMsg}`;
   }
 
