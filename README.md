@@ -81,10 +81,8 @@ site/
 ├── 404.html                             # Página de erro 404 personalizada
 ├── robots.txt                           # Diretrizes para motores de busca
 ├── sitemap.xml                          # Mapa do site com extensão de imagens
-├── site.webmanifest                     # Manifesto PWA
+├── site.webmanifest                     # Manifesto Web
 ├── CNAME                                # Domínio oficial (casaemourinhos.com.br)
-├── favicon.ico / favicon.png            # Ícones do site
-├── apple-touch-icon.png                 # Ícone Apple Touch
 ├── casa-ourinhos-landing-page.md        # Documento executivo de planejamento
 ├── documentation/
 │   └── promptHistory.md                 # Histórico completo de prompts da sessão

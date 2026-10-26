@@ -1190,16 +1190,23 @@ h1, h2, h3, h4, .font-serif {
   top: 2rem;
   right: 2rem;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 0.75rem 1.25rem;
+  padding: 0.6rem 0.9rem;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  backdrop-filter: blur(4px);
 }
 
-.condo-logo-img {
-  max-height: 48px;
-  width: auto;
+.condo-house-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .condo-hero-title {
@@ -2074,11 +2081,11 @@ h1, h2, h3, h4, .font-serif {
   .condo-logo-wrap {
     top: 1rem;
     right: 1rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.45rem 0.65rem;
   }
 
-  .condo-logo-img {
-    max-height: 34px;
+  .condo-house-emoji {
+    font-size: 1.6rem;
   }
 
   .condo-hero-overlay {
