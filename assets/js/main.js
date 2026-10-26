@@ -630,15 +630,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Botão "Ver todas as 35 fotos"
-  const btnOpenFullGallery = document.getElementById("btnOpenFullGallery");
-  if (btnOpenFullGallery) {
-    btnOpenFullGallery.addEventListener("click", (e) => {
-      e.preventDefault();
-      trackConversionEvent("gallery_view_all", "gallery_button");
-      openLightboxBySrc(GALLERY_ITEMS[0].src, "todas");
+  /* --------------------------------------------------------------------------
+     FILTROS NA PÁGINA PARA A GALERIA DE FOTOS
+     -------------------------------------------------------------------------- */
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const galleryCards = document.querySelectorAll("#galleryAllGrid .gallery-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedCat = btn.getAttribute("data-filter") || "todas";
+
+      // Atualiza estado ativo dos botões
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Filtra os cards visíveis na página
+      galleryCards.forEach((card) => {
+        const cardCat = card.getAttribute("data-category") || "";
+        if (selectedCat === "todas" || cardCat === selectedCat) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
     });
-  }
+  });
 
   // Teclado no Lightbox
   document.addEventListener("keydown", (e) => {

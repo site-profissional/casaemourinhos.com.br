@@ -563,115 +563,538 @@
           </p>
         </div>
 
-        <!-- Grade de Destaques Selecionados (8 Fotografias-Chave) -->
-        <div class="gallery-curated-grid">
+        <!-- Abas de Filtros Rápidos na Página -->
+        <div class="gallery-filter-tabs" role="tablist" aria-label="Filtrar fotografias por ambiente">
+          <button type="button" class="filter-btn active" data-filter="todas">Todas as Fotos da Casa (35)</button>
+          <button type="button" class="filter-btn" data-filter="fachada">Fachada & Entrada</button>
+          <button type="button" class="filter-btn" data-filter="social">Área Social</button>
+          <button type="button" class="filter-btn" data-filter="gourmet">Cozinha & Espaço Gourmet</button>
+          <button type="button" class="filter-btn" data-filter="suites">Suítes & Dormitórios</button>
+          <button type="button" class="filter-btn" data-filter="externa">Quintal & Área Externa</button>
+        </div>
 
-          <!-- 1. Fachada Frontal -->
+        <!-- Grade com TODAS as 35 Fotos da Casa à Mostra com Comentários Centralizados -->
+        <div class="gallery-all-grid" id="galleryAllGrid">
+
+          <!-- 1. Fachada Frontal Completa -->
           <article class="gallery-card" data-category="fachada">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto da fachada frontal">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
               <img src="assets/images/casa/fachada-frontal-casa-alto-padrao-ourinhos.webp" alt="Fachada frontal completa da casa em Ourinhos" class="gallery-card-img" width="1599" height="1599" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Fachada Frontal</h3>
-              <p class="gallery-card-desc">Linhas retas contemporâneas com pé-direito imponente e jardim frontal.</p>
+              <h3 class="gallery-card-title">Fachada Frontal Completa</h3>
+              <p class="gallery-card-desc">Arquitetura contemporânea de linhas retas com pé-direito imponente e jardim frontal.</p>
             </div>
           </article>
 
           <!-- 2. Fachada Noturna -->
           <article class="gallery-card" data-category="fachada">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto da fachada noturna">
-              <img src="assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp" alt="Fachada noturna com iluminação cênica" class="gallery-card-img" width="960" height="540" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/fachada-noturna-iluminacao-ourinhos.webp" alt="Fachada noturna com iluminação cênica da casa" class="gallery-card-img" width="960" height="540" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Fachada Noturna</h3>
-              <p class="gallery-card-desc">Iluminação externa destacando os volumes arquitetônicos e o paisagismo.</p>
+              <h3 class="gallery-card-title">Fachada Noturna com Iluminação Cênica</h3>
+              <p class="gallery-card-desc">Projeto luminotécnico valorizando os volumes arquitetônicos e o paisagismo.</p>
             </div>
           </article>
 
-          <!-- 3. Sala de Estar Integrada -->
+          <!-- 3. Vista Frontal e Paisagismo -->
+          <article class="gallery-card" data-category="fachada">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-moderna-jardim-frontal.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/fachada-moderna-jardim-frontal.webp" alt="Vista frontal e paisagismo da residência" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Vista Frontal e Paisagismo</h3>
+              <p class="gallery-card-desc">Gramado verdejante, palmeiras e entrada social imponente com vidros duplos.</p>
+            </div>
+          </article>
+
+          <!-- 4. Jardim Frontal e Calçada -->
+          <article class="gallery-card" data-category="fachada">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/jardim-frontal-paisagismo-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/jardim-frontal-paisagismo-ourinhos.webp" alt="Jardim frontal e calçada em paver" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Jardim Frontal e Calçada em Paver</h3>
+              <p class="gallery-card-desc">Área frontal com acabamento refinado e integração com a rua arborizada.</p>
+            </div>
+          </article>
+
+          <!-- 5. Garagem Coberta -->
+          <article class="gallery-card" data-category="fachada">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/garagem-coberta-fachada-frontal.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/garagem-coberta-fachada-frontal.webp" alt="Garagem coberta da fachada frontal" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Garagem Coberta e Acesso Social</h3>
+              <p class="gallery-card-desc">Espaço coberto para 2 veículos e acesso direto sem desníveis.</p>
+            </div>
+          </article>
+
+          <!-- 6. Garagem Ampla para até 5 Veículos -->
+          <article class="gallery-card" data-category="fachada">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/garagem-ampla-espaco-veiculos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/garagem-ampla-espaco-veiculos.webp" alt="Garagem ampla com espaço para até 5 veículos" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Acomodação para até 5 Veículos</h3>
+              <p class="gallery-card-desc">Amplo espaço entre vagas cobertas e descobertas com piso de alta durabilidade.</p>
+            </div>
+          </article>
+
+          <!-- 7. Vista Aérea Noturna -->
+          <article class="gallery-card" data-category="fachada">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/vista-aerea-noturna-propriedade-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/vista-aerea-noturna-propriedade-ourinhos.webp" alt="Vista aérea noturna do terreno duplo de 912 m²" class="gallery-card-img" width="960" height="540" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Vista Aérea Noturna da Propriedade</h3>
+              <p class="gallery-card-desc">Destaque para o lote duplo de 912 m² e sua iluminação perimetral segura.</p>
+            </div>
+          </article>
+
+          <!-- 8. Sala de Jantar Integrada -->
           <article class="gallery-card" data-category="social">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-estar-integracao-cozinha.webp" role="button" tabindex="0" aria-label="Ampliar foto da sala de estar">
-              <img src="assets/images/casa/sala-estar-integracao-cozinha.webp" alt="Sala de estar integrada da residência" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-jantar-integrada-alto-padrao.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/sala-jantar-integrada-alto-padrao.webp" alt="Sala de jantar integrada de alto padrão" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Sala de Estar Integrada</h3>
-              <p class="gallery-card-desc">Ambiente amplo e claro integrado à circulação e à área de convivência.</p>
+              <h3 class="gallery-card-title">Sala de Jantar Integrada</h3>
+              <p class="gallery-card-desc">Conexão fluida com a área de estar e cozinha, piso em porcelanato polido.</p>
             </div>
           </article>
 
-          <!-- 4. Varanda Gourmet com Ilha -->
+          <!-- 9. Sala de Estar e Convivência -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-estar-integracao-cozinha.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/sala-estar-integracao-cozinha.webp" alt="Sala de estar integrada com a cozinha" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Sala de Estar e Convivência</h3>
+              <p class="gallery-card-desc">Ambiente claro, acolhedor e perfeitamente integrado para reunir família e convidados.</p>
+            </div>
+          </article>
+
+          <!-- 10. Escada em Granito e Vidro -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-estar-escada-design-moderno.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/sala-estar-escada-design-moderno.webp" alt="Escada escultural em granito e vidro" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Escada Escultural em Granito e Vidro</h3>
+              <p class="gallery-card-desc">Guarda-corpo panorâmico em vidro e degraus com acabamento refinado.</p>
+            </div>
+          </article>
+
+          <!-- 11. Detalhe da Escada -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/detalhe-escada-sala-estar.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/detalhe-escada-sala-estar.webp" alt="Perspectiva da escada e circulação" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Perspectiva da Escada e Circulação</h3>
+              <p class="gallery-card-desc">Design minimalista e amplitude vertical conectando os dois pavimentos.</p>
+            </div>
+          </article>
+
+          <!-- 12. Pé-Direito Elevado na Circulação -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/ambiente-social-escada-acesso-superior.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/ambiente-social-escada-acesso-superior.webp" alt="Pé-direito elevado na circulação social" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Pé-Direito Elevado na Circulação</h3>
+              <p class="gallery-card-desc">Excelente entrada de luz natural e conforto térmico em todas as estações.</p>
+            </div>
+          </article>
+
+          <!-- 13. Sala de TV Térrea -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-tv-estar-integrada.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/sala-tv-estar-integrada.webp" alt="Sala de TV e estar térrea" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Sala de TV e Estar Térrea</h3>
+              <p class="gallery-card-desc">Ambiente reservado para entretenimento e descanso no pavimento inferior.</p>
+            </div>
+          </article>
+
+          <!-- 14. Sala de TV Mezanino Superior -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/sala-tv-mezanino-piso-superior.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/sala-tv-mezanino-piso-superior.webp" alt="Segunda sala de TV no mezanino superior" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Segunda Sala de TV (Mezanino Superior)</h3>
+              <p class="gallery-card-desc">Ambiente privativo no andar superior para momentos em família com total tranquilidade.</p>
+            </div>
+          </article>
+
+          <!-- 15. Vista do Mezanino para a Varanda Gourmet -->
+          <article class="gallery-card" data-category="social">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/mezanino-pe-direito-duplo-vista-gourmet.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/mezanino-pe-direito-duplo-vista-gourmet.webp" alt="Vista do mezanino com pé-direito duplo para a varanda gourmet" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Mezanino sobre a Área Gourmet</h3>
+              <p class="gallery-card-desc">Sensação ímpar de amplitude visual do pé-direito duplo sobre a varanda gourmet.</p>
+            </div>
+          </article>
+
+          <!-- 16. Espaço Gourmet com Ilha -->
           <article class="gallery-card" data-category="gourmet">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp" role="button" tabindex="0" aria-label="Ampliar foto da varanda gourmet">
-              <img src="assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp" alt="Varanda gourmet com ilha e churrasqueira" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/espaco-gourmet-ilha-churrasqueira-pe-direito-alto.webp" alt="Espaço gourmet com ilha e pé-direito elevado" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Varanda Gourmet</h3>
-              <p class="gallery-card-desc">Pé-direito elevado, bancada em granito, churrasqueira e fechamento em vidro.</p>
+              <h3 class="gallery-card-title">Espaço Gourmet com Ilha</h3>
+              <p class="gallery-card-desc">Bancada em granito escuro, marcenaria planejada e pé-direito elevado.</p>
             </div>
           </article>
 
-          <!-- 5. Cozinha Planejada -->
+          <!-- 17. Churrasqueira Revestida -->
           <article class="gallery-card" data-category="gourmet">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/cozinha-principal-planejados-granito.webp" role="button" tabindex="0" aria-label="Ampliar foto da cozinha planejada">
-              <img src="assets/images/casa/cozinha-principal-planejados-granito.webp" alt="Cozinha planejada com armários sob medida" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/varanda-gourmet-churrasqueira-planejados.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/varanda-gourmet-churrasqueira-planejados.webp" alt="Churrasqueira moderna revestida em 3D" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Cozinha Planejada</h3>
-              <p class="gallery-card-desc">Armários sob medida, bancadas amplas em granito e torre quente.</p>
+              <h3 class="gallery-card-title">Churrasqueira Moderna Revestida</h3>
+              <p class="gallery-card-desc">Grelha inox, coifa eficiente e revestimento geométrico 3D de alta sofisticação.</p>
             </div>
           </article>
 
-          <!-- 6. Suíte Master com Closet -->
+          <!-- 18. Bancada Gourmet e Cuba de Apoio -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/bancada-granito-churrasqueira-gourmet.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/bancada-granito-churrasqueira-gourmet.webp" alt="Bancada em granito e cuba gourmet" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Bancada Gourmet e Cuba de Apoio</h3>
+              <p class="gallery-card-desc">Espaço funcional pensado para o preparo de refeições especiais com amigos.</p>
+            </div>
+          </article>
+
+          <!-- 19. Cozinha com Armários Planejados -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/cozinha-principal-planejados-granito.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/cozinha-principal-planejados-granito.webp" alt="Cozinha com armários planejados e granito" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Cozinha com Armários Planejados</h3>
+              <p class="gallery-card-desc">Móveis sob medida, amplas bancadas de trabalho e torre quente funcional.</p>
+            </div>
+          </article>
+
+          <!-- 20. Detalhes da Marcenaria da Cozinha -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/cozinha-planejada-armarios-modernos.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/cozinha-planejada-armarios-modernos.webp" alt="Detalhes da marcenaria sob medida da cozinha" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Detalhes da Marcenaria da Cozinha</h3>
+              <p class="gallery-card-desc">Armários superiores com nichos e acabamento resistente de fácil manutenção.</p>
+            </div>
+          </article>
+
+          <!-- 21. Integração da Cozinha com a Área Social -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/cozinha-integrada-area-social.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/cozinha-integrada-area-social.webp" alt="Integração da cozinha com a área social" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Integração com a Área Social</h3>
+              <p class="gallery-card-desc">Visão aberta facilitando a comunicação com a copa e salas.</p>
+            </div>
+          </article>
+
+          <!-- 22. Copa para Refeições Diárias -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/copa-cozinha-refeicoes-integrada.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/copa-cozinha-refeicoes-integrada.webp" alt="Copa para refeições diárias" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Copa para Refeições Diárias</h3>
+              <p class="gallery-card-desc">Praticidade e conforto para o café da manhã e almoços cotidianos.</p>
+            </div>
+          </article>
+
+          <!-- 23. Visão Ampla da Cozinha Funcional -->
+          <article class="gallery-card" data-category="gourmet">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/vista-ampla-cozinha-planejada.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/vista-ampla-cozinha-planejada.webp" alt="Visão ampla da cozinha com esquadrias de alumínio" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Ampla Visão da Cozinha Funcional</h3>
+              <p class="gallery-card-desc">Iluminação dedicada e ventilação natural com esquadrias de alumínio.</p>
+            </div>
+          </article>
+
+          <!-- 24. Suíte Master com Closet -->
           <article class="gallery-card" data-category="suites">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-master-ampla-luminosidade.webp" role="button" tabindex="0" aria-label="Ampliar foto da suíte master">
-              <img src="assets/images/casa/suite-master-ampla-luminosidade.webp" alt="Suíte master com closet da residência" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-master-ampla-luminosidade.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-master-ampla-luminosidade.webp" alt="Suíte master com closet privativo" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
               <h3 class="gallery-card-title">Suíte Master com Closet</h3>
-              <p class="gallery-card-desc">Quarto principal amplo com iluminação natural, persiana automatizada e closet privativo.</p>
+              <p class="gallery-card-desc">Espaço generoso, closet privativo e portas balcão com persiana integrada.</p>
             </div>
           </article>
 
-          <!-- 7. Quintal Gramado -->
+          <!-- 25. Suíte Master — Vista de Descanso -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-master-conforto-persiana-automatizada.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-master-conforto-persiana-automatizada.webp" alt="Suíte master persiana automatizada e conforto" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Suíte Master — Ângulo de Descanso</h3>
+              <p class="gallery-card-desc">Conforto acústico, climatização preparada e privacidade absoluta.</p>
+            </div>
+          </article>
+
+          <!-- 26. Banheiro da Suíte Master -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/banheiro-suite-master-acabamento-nobre.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/banheiro-suite-master-acabamento-nobre.webp" alt="Banheiro da suíte master com acabamento nobre" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Banheiro da Suíte Master</h3>
+              <p class="gallery-card-desc">Revestimentos em porcelanato de grande formato e box blindex de qualidade.</p>
+            </div>
+          </article>
+
+          <!-- 27. Bancada do Banheiro Master -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/bancada-pia-banheiro-suite-master.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/bancada-pia-banheiro-suite-master.webp" alt="Bancada de pia esculpida do banheiro master" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Bancada Esculpida do Banheiro Master</h3>
+              <p class="gallery-card-desc">Mármore nobre com cuba esculpida e metais sanitários de alto padrão.</p>
+            </div>
+          </article>
+
+          <!-- 28. Suíte Superior 2 -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-2-superior-conforto-espaco.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-2-superior-conforto-espaco.webp" alt="Segunda suíte no piso superior" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Suíte Superior 2</h3>
+              <p class="gallery-card-desc">Quarto amplo com espaço para bancada de estudos e iluminação embutida.</p>
+            </div>
+          </article>
+
+          <!-- 29. Suíte Superior 2 — Conforto -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-2-superior-vista-ampla.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-2-superior-vista-ampla.webp" alt="Suíte 2 piso superior com vista e TV" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Suíte Superior 2 — Conforto</h3>
+              <p class="gallery-card-desc">Acesso privativo ao banheiro e vista aberta para a tranquilidade do condomínio.</p>
+            </div>
+          </article>
+
+          <!-- 30. Banheiro da Suíte Superior 2 -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/banheiro-suite-2-superior.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/banheiro-suite-2-superior.webp" alt="Banheiro privativo da suíte 2 superior" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Banheiro da Suíte Superior 2</h3>
+              <p class="gallery-card-desc">Bancada em mármore travertino, espelho amplo e box com acabamento fosco.</p>
+            </div>
+          </article>
+
+          <!-- 31. Suíte Superior 3 -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-3-superior-iluminacao-natural.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-3-superior-iluminacao-natural.webp" alt="Suíte 3 superior com iluminação natural" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Suíte Superior 3</h3>
+              <p class="gallery-card-desc">Excelente incidência de luz natural e armários bem posicionados.</p>
+            </div>
+          </article>
+
+          <!-- 32. Quinto Dormitório -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/quarto-dormitorio-piso-superior.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/quarto-dormitorio-piso-superior.webp" alt="Quinto dormitório no piso superior" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Quinto Dormitório (Piso Superior)</h3>
+              <p class="gallery-card-desc">Ambiente flexível para dormitório de hóspedes, home office ou biblioteca.</p>
+            </div>
+          </article>
+
+          <!-- 33. Suíte Térrea Privativa -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/suite-terrea-privativa-acessibilidade.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/suite-terrea-privativa-acessibilidade.webp" alt="Quarta suíte localizada no piso térreo" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Suíte Térrea Privativa</h3>
+              <p class="gallery-card-desc">Quarta suíte posicionada no piso térreo, ideal para visitantes ou acessibilidade.</p>
+            </div>
+          </article>
+
+          <!-- 34. Banheiro da Suíte Térrea -->
+          <article class="gallery-card" data-category="suites">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/banheiro-suite-terrea.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/banheiro-suite-terrea.webp" alt="Banheiro da suíte térrea privativa" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Banheiro da Suíte Térrea</h3>
+              <p class="gallery-card-desc">Acesso direto, ventilação natural e acabamento contemporâneo.</p>
+            </div>
+          </article>
+
+          <!-- 35. Amplo Quintal com Coqueiros -->
           <article class="gallery-card" data-category="externa">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/amplo-quintal-gramado-coqueiros.webp" role="button" tabindex="0" aria-label="Ampliar foto do quintal">
-              <img src="assets/images/casa/amplo-quintal-gramado-coqueiros.webp" alt="Amplo quintal gramado com coqueiros em terreno de 912 m²" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/amplo-quintal-gramado-coqueiros.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/amplo-quintal-gramado-coqueiros.webp" alt="Amplo quintal gramado com coqueiros em lote duplo de 912 m²" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Quintal Gramado</h3>
-              <p class="gallery-card-desc">Área verde privativa na propriedade de 912 m² composta por dois lotes.</p>
+              <h3 class="gallery-card-title">Amplo Quintal Gramado com Coqueiros</h3>
+              <p class="gallery-card-desc">Área verde exuberante no lote duplo de 912 m² com espaço para diversos projetos.</p>
             </div>
           </article>
 
-          <!-- 8. Vista Aérea da Propriedade -->
-          <article class="gallery-card" data-category="fachada">
-            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/vista-aerea-noturna-propriedade-ourinhos.webp" role="button" tabindex="0" aria-label="Ampliar foto da vista aérea">
-              <img src="assets/images/casa/vista-aerea-noturna-propriedade-ourinhos.webp" alt="Vista aérea noturna mostrando os dois terrenos" class="gallery-card-img" width="960" height="540" loading="lazy" decoding="async">
+          <!-- 36. Vista Panorâmica da Varanda Superior -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/varanda-superior-vista-quintal-jardim.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/varanda-superior-vista-quintal-jardim.webp" alt="Vista panorâmica da varanda superior sobre o quintal" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
               <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
             </div>
             <div class="gallery-card-caption">
-              <h3 class="gallery-card-title">Vista Aérea</h3>
-              <p class="gallery-card-desc">Visão superior evidenciando os 912 m² de terreno e a amplitude da propriedade.</p>
+              <h3 class="gallery-card-title">Vista Panorâmica da Varanda Superior</h3>
+              <p class="gallery-card-desc">Terraço do andar de cima com vista ampla para o quintal privativo e horizonte.</p>
             </div>
           </article>
 
-        </div>
+          <!-- 37. Terraço Superior Panorâmico -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/terraco-superior-vista-panoramica.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/terraco-superior-vista-panoramica.webp" alt="Terraço superior com deck cerâmico" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Terraço Superior e Deck</h3>
+              <p class="gallery-card-desc">Piso cerâmico que remete à madeira e mureta com acabamento em granito.</p>
+            </div>
+          </article>
 
-        <!-- Botão de Abertura da Galeria Completa no Lightbox -->
-        <div class="gallery-action-center">
-          <button type="button" class="btn btn-secondary btn-lg" id="btnOpenFullGallery">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            Ver todas as fotos da casa (35)
-          </button>
+          <!-- 38. Jardim dos Coqueiros e Caminho de Tijolos -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/jardim-quintal-espaco-verde-privativo.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/jardim-quintal-espaco-verde-privativo.webp" alt="Jardim com coqueiros e caminho de tijolos no quintal" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Jardim dos Coqueiros e Paisagismo</h3>
+              <p class="gallery-card-desc">Paisagismo natural consolidado proporcionando sombra, ar puro e privacidade.</p>
+            </div>
+          </article>
+
+          <!-- 39. Espaço Aberto do Quintal -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/quintal-amplo-terreno-912m2.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/quintal-amplo-terreno-912m2.webp" alt="Espaço aberto do quintal em lote duplo de 912 m²" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Espaço Aberto do Quintal</h3>
+              <p class="gallery-card-desc">Terreno duplo de 912 m² unificado com segurança entre muros altos.</p>
+            </div>
+          </article>
+
+          <!-- 40. Fachada Posterior e Varanda Gourmet -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/fachada-posterior-quintal-privativo.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/fachada-posterior-quintal-privativo.webp" alt="Fachada posterior da residência vista do quintal" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Fachada Posterior e Varanda Gourmet</h3>
+              <p class="gallery-card-desc">Varanda fechada em blindex com ligação direta para o gramado.</p>
+            </div>
+          </article>
+
+          <!-- 41. Fechamento em Vidro da Varanda Gourmet -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/varanda-gourmet-fechada-vidro-vista-quintal.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/varanda-gourmet-fechada-vidro-vista-quintal.webp" alt="Varanda gourmet fechada com folhas de vidro deslizantes" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Fechamento em Vidro da Varanda</h3>
+              <p class="gallery-card-desc">Permite desfrutar do espaço gourmet em dias de chuva ou vento com todo o conforto.</p>
+            </div>
+          </article>
+
+          <!-- 42. Canil Estruturado no Quintal -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/espaco-pet-canil-quintal.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/espaco-pet-canil-quintal.webp" alt="Canil estruturado no quintal da casa em Ourinhos" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Canil Estruturado no Quintal</h3>
+              <p class="gallery-card-desc">Estrutura dedicada para animais de estimação com segurança e higienização fácil.</p>
+            </div>
+          </article>
+
+          <!-- 43. Circulação Lateral e Canil -->
+          <article class="gallery-card" data-category="externa">
+            <div class="gallery-card-thumb-wrap" data-open-lightbox data-gallery-src="assets/images/casa/area-externa-canil-gramado.webp" role="button" tabindex="0" aria-label="Ampliar foto">
+              <img src="assets/images/casa/area-externa-canil-gramado.webp" alt="Acesso lateral e gramado da residência" class="gallery-card-img" width="960" height="720" loading="lazy" decoding="async">
+              <span class="gallery-card-zoom-badge">🔍 Ampliar</span>
+            </div>
+            <div class="gallery-card-caption">
+              <h3 class="gallery-card-title">Circulação Lateral e Canil</h3>
+              <p class="gallery-card-desc">Acesso lateral independente conectando frente e fundos sem passar pela casa.</p>
+            </div>
+          </article>
+
         </div>
       </div>
+
     </section>
 
     <!-- ------------------------------------------------------------------------
